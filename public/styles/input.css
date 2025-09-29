@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: "Mrs Saint Delafield";
+    font-style: italic;
+    font-display: swap;
+    font-weight: 400;
+    src: url("/public/fonts/MrsSaintDelafield-Regular.ttf") format("truetype");
+}
+
+@theme {
+    --color-text: #fff;
+    --color-bkg: #000;
+    --color-primary: #aaa;
+    --color-secondary: #bbb;
+    --color-accent: #ccc;
+
+    --font-script: "Mrs Saint Delafield", cursive;
+}

@@ -1,0 +1,27 @@
+{% extends "layouts/app.html.twig" %}
+
+{% block main %}
+    <div class="h-[100vh] max-h-[800px] w-full flex items-center justify-center relative">
+        <div id="the-beasleys" class="z-10 flex flex-col items-center justify-center">
+            <p class="font-script text-3xl ml-2  opacity-0 transition-all duration-1000 delay-100">the</p>
+            <p class="font-script text-5xl  opacity-0 transition-all duration-1000 delay-100">Beasleys</p>
+            <p class="italic mt-10 text-sm opacity-0 transition-all duration-1000 delay-500">10 / 3 / 2026</p>
+        </div>
+
+        {# Bluebonnets Background #}
+        <div class="z-0 flex items-center justify-center absolute top-0 left-0">
+            <img src="/public/img/bluebonnets.webp"
+                 alt="bluebonnets"
+                 class="w-full h-[100vh] max-h-[800px] object-cover object-right opacity-25 saturate-0"/>
+        </div>
+    </div>
+
+    <section id="welcome-section" class="flex flex-col py-20 text-center mx-auto w-11/12 max-w-[120ch]">
+        <p class="text-lg">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut deserunt dignissimos doloremque eveniet fugit
+            harum illo minus mollitia neque obcaecati, odio odit quam saepe sapiente?
+        </p>
+    </section>
+
+    <script src="/public/js/index.js"></script>
+{% endblock %}

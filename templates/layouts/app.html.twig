@@ -1,0 +1,22 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Beasley Wedding</title>
+    <link rel="stylesheet" href="/public/styles/output.css" />
+    {% block headscripts %}{% endblock %}
+</head>
+<body>
+<noscript>
+    <h1 style="color:red; text-align:center; margin-top:10rem;">THIS SITE WILL NOT WORK WITHOUT JAVASCRIPT ENABLED.</h1>
+    <h1 style="color:red; text-align:center; margin-bottom:10rem;">IF YOU DO NOT KNOW WHY YOU ARE SEEING THIS MESSAGE, CALL YOUR GRANDKIDS FOR HELP.</h1>
+</noscript>
+
+    <main class="bg-bkg flex flex-col text-text">
+        {% block main %}
+        {% endblock %}
+    </main>
+
+    <script src="/public/js/app.js" ></script>
+</body>
+</html>

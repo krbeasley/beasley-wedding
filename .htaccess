@@ -1,0 +1,43 @@
+#-----------------------------------------------------------------------------------------------------------------------
+# beasley.wedding main .htaccess file.
+#
+# Assumes the site lives at /var/www/krbeasley.dev during the dev work and lives in side the PUBLIC_HTML folder on
+# Hostinger's shared hosting servers.
+#-----------------------------------------------------------------------------------------------------------------------
+
+# Every request goes to the index page unless it's an actual file
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ /index.php?path=$1 [NC,L,QSA]
+</IfModule>
+
+########################################################################################################################
+# SECURITY AND ACCESS CONTROL
+
+# Disallow indexing of directories
+Options -Indexes
+
+# Dissallow from .env
+<Files .env>
+    Require all denied
+</Files>
+
+# Dissallow from twig directly
+<Files *.twig>
+    Require all denied
+</Files>
+
+# Dissallow from .gitignore
+<Files .gitignore>
+    Require all denied
+</Files>
+
+# Dissallow from composer files
+<Files composer.*>
+    Require all denied
+</Files>
+
+# 404 all requests made to the these directories
+RedirectMatch 404 ^/(node_modules|\.git|config|templates|vendor|app)
