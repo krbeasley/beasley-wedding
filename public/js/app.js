@@ -4,6 +4,17 @@
 // animations.
 
 const fadeElements = document.querySelectorAll('.fade-in');
+const returnToTopButton = document.getElementById('return-to-top');
+
+returnToTopButton.addEventListener('click', () => {
+    // Only scroll when the button is visible
+    if (returnToTopButton.classList.contains('opacity-100')) {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
+    }
+});
 
 window.addEventListener('DOMContentLoaded', () => {
     fadeElements.forEach((e) => {
@@ -22,16 +33,23 @@ window.addEventListener('scroll', () => {
             tryUnfadeElement(fadeElements[i]);
         }
     }
+
+    // Show / hide the return to top button
+    if (window.scrollY >= 400) {
+        returnToTopButton.classList.replace('opacity-0', 'opacity-100');
+    } else {
+        returnToTopButton.classList.replace('opacity-100', 'opacity-0')
+    }
 })
 
 function resetFadeElement(element) {
     element.ariaHidden = 'true';
     element.classList.remove('opacity-100');
-    element.classList.add('opacity-0', 'transition-all', 'duration-150', 'delay-100');
+    element.classList.add('opacity-0', 'transition-all', 'duration-250', 'delay-250');
 }
 
 function tryUnfadeElement(element) {
-    const revealPadding = 100;
+    const revealPadding = 300;
     const scrollY = window.scrollY + window.innerHeight;
     const boundingBox = element.getBoundingClientRect();
 

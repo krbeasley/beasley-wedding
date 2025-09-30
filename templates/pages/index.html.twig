@@ -1,7 +1,23 @@
 {% extends "layouts/app.html.twig" %}
 
 {% block main %}
-    <div class="h-[100vh] max-h-[800px] w-full flex items-center justify-center relative">
+    <div class="h-[100vh] max-h-[1000px] w-full flex items-center justify-center relative">
+        <div id="nav" class="absolute top-0 left-1/10 w-4/5 flex items-center justify-evenly transition-all duration-1000
+        delay-1000 gap-10 py-6 opacity-0 z-10">
+            <a class="text-xs text-center italic hover:text-shadow-white text-shadow-xs/25 hover:text-shadow-lg/25 cursor-pointer
+            transition-all duration-150"
+               href="">Directions</a>
+            <a class="text-xs text-center italic hover:text-shadow-white text-shadow-xs/25 hover:text-shadow-lg/25 cursor-pointer
+            transition-all duration-150"
+               href="">RSVP</a>
+            <a class="text-xs text-center italic hover:text-shadow-white text-shadow-xs/25 hover:text-shadow-lg/25 cursor-pointer
+            transition-all duration-150"
+               href="">Registry</a>
+            <a class="text-xs text-center italic hover:text-shadow-white text-shadow-xs/25 hover:text-shadow-lg/25 cursor-pointer
+            transition-all duration-150 hidden md:inline"
+               href="">Memory Lane</a>
+        </div>
+
         <div id="the-beasleys" class="z-10 flex flex-col items-center justify-center">
             <p class="font-script text-3xl ml-2  opacity-0 transition-all duration-1000 delay-100">the</p>
             <p class="font-script text-5xl  opacity-0 transition-all duration-1000 delay-100">Beasleys</p>
@@ -12,7 +28,7 @@
         <div class="z-0 flex items-center justify-center absolute top-0 left-0">
             <img src="/public/img/bluebonnets.webp"
                  alt="bluebonnets"
-                 class="w-full h-[100vh] max-h-[800px] object-cover object-right opacity-25 saturate-0"/>
+                 class="w-full h-[100vh] max-h-[1000px] object-cover object-right opacity-25 saturate-0"/>
         </div>
     </div>
 
@@ -39,16 +55,26 @@
     </section>
 
     <section id="link-tree" class="flex flex-col items-center justify-center py-16">
-        <p class="text-4xl font-script">Links</p>
-        <img src="/public/img/divider_ornament.png" alt="Ornamental Divider" class="invert-100 opacity-85 w-[120px] -mt-[50px]" />
+        <p class="text-4xl font-script fade-in">Links</p>
+        <img src="/public/img/divider_ornament.png"
+             alt="Ornamental Divider"
+             class="invert-100 brightness-90 w-[120px] -mt-[50px] fade-in z-0"/>
 
-        <div class="w-full flex flex-col items-center justify-start gap-4 -mt-[30px]">
-            <a class="text-xl" href="">RSVP</a>
-            <a class="text-xl" href="">Directions</a>
-            <a class="text-xl" href="">Registry</a>
-            <a class="text-xl" href="">Memory Lane</a>
+        <div class="w-full flex flex-col items-center justify-start gap-4 -mt-[30px] z-10 fade-in">
+            <a class="text-xl hover:text-shadow-white text-shadow-lg/25 cursor-pointer transition-all duration-150"
+               href="/">RSVP</a>
+            <a class="text-xl hover:text-shadow-white text-shadow-lg/25 cursor-pointer transition-all duration-150"
+               href="/">Directions</a>
+            <a class="text-xl hover:text-shadow-white text-shadow-lg/25 cursor-pointer transition-all duration-150"
+               href="/">Registry</a>
+            <a class="text-xl hover:text-shadow-white text-shadow-lg/25 cursor-pointer transition-all duration-150"
+               href="/">Memory Lane</a>
         </div>
     </section>
+
+    <div class="w-full flex items-center justify-center my-20">
+        <p class="text-xs text-text/35 font-mono">Written by Kyle with love <3</p>
+    </div>
 
     <script src="/public/js/index.js"></script>
 {% endblock %}

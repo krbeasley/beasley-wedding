@@ -17,3 +17,11 @@
 
     --font-script: "Mrs Saint Delafield", cursive;
 }
+
+.bg-glass {
+    box-shadow:
+        inset 0 0 10px 3px rgba(200,200,255,.30),
+        inset 0 0 3px 1px rgba(250,250,255,.85),
+        0 0 12px 5px rgba(10,5,50,.35);
+    backdrop-filter: blur(2px);
+}

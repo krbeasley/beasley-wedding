@@ -6,7 +6,11 @@
 const theBeasleys = document.getElementById('the-beasleys');
 
 window.addEventListener('DOMContentLoaded', () => {
+    // unhide "the Beasleys"
     for (let i = 0; i < theBeasleys.childElementCount; i++) {
         theBeasleys.children.item(i).classList.replace('opacity-0', 'opacity-100');
     }
+
+    // unhide the nav menu
+    document.getElementById('nav').classList.replace('opacity-0', 'opacity-100');
 })
