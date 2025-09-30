@@ -16,11 +16,38 @@
         </div>
     </div>
 
-    <section id="welcome-section" class="flex flex-col py-20 text-center mx-auto w-11/12 max-w-[120ch]">
-        <p class="text-lg">
+    <section id="welcome-section" class="flex flex-col py-20 text-center items-center justify-center mx-auto w-11/12
+    max-w-[800px] relative my-10">
+        {# Top ornaments #}
+        <div aria-hidden="false" class="fade-in absolute flex flex-row items-center justify-between w-full top-0 left-0">
+            <img class="w-10 h-10 saturate-0 brightness-200 -scale-y-100" alt="Ornamental corner piece" src="/public/img/corner_ornament.webp"/>
+
+            <img class="w-10 h-10 saturate-0 brightness-200 -scale-100" alt="Ornamental corner piece" src="/public/img/corner_ornament.webp"/>
+        </div>
+
+        <p class="fade-in w-4/5" aria-hidden="false">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut deserunt dignissimos doloremque eveniet fugit
             harum illo minus mollitia neque obcaecati, odio odit quam saepe sapiente?
         </p>
+
+        {# Bottom ornaments #}
+        <div aria-hidden="false" class="fade-in absolute flex flex-row items-center justify-between w-full bottom-0 left-0">
+            <img class="w-10 h-10 saturate-0 brightness-200" alt="Ornamental corner piece" src="/public/img/corner_ornament.webp"/>
+
+            <img class="w-10 h-10 saturate-0 brightness-200 -scale-x-100" alt="Ornamental corner piece" src="/public/img/corner_ornament.webp"/>
+        </div>
+    </section>
+
+    <section id="link-tree" class="flex flex-col items-center justify-center py-16">
+        <p class="text-4xl font-script">Links</p>
+        <img src="/public/img/divider_ornament.png" alt="Ornamental Divider" class="invert-100 opacity-85 w-[120px] -mt-[50px]" />
+
+        <div class="w-full flex flex-col items-center justify-start gap-4 -mt-[30px]">
+            <a class="text-xl" href="">RSVP</a>
+            <a class="text-xl" href="">Directions</a>
+            <a class="text-xl" href="">Registry</a>
+            <a class="text-xl" href="">Memory Lane</a>
+        </div>
     </section>
 
     <script src="/public/js/index.js"></script>
