@@ -1,0 +1,15 @@
+{% extends "layouts/admin.html.twig" %}
+
+{% block main %}
+    <div class="flex w-full h-full px-8">
+        <div class="w-full h-fit flex items-center justify-start bg-gray-200 px-8">
+            <p class="text-6xl font-bold flex items-end py-8">
+                100
+                <span class="text-3xl flex items-end font-light pl-2">Days</span>
+            </p>
+        </div>
+
+        {# Hidden values #}
+        <p class="hidden absolute" id="_csrf_token">{{ csrf() }}</p>
+    </div>
+{% endblock %}

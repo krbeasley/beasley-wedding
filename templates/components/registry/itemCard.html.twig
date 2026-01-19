@@ -1,0 +1,24 @@
+{# Registry Item Card #}
+<div class="registry-item-card flex relative grow w-65 lg:w-80 text-bkg bg-inherit shadow-sm outline-1
+outline-accent/20 h-130 rounded overflow-hidden" aria-hidden="false">
+
+  {# Item Details #}
+  <div class="z-10 absolute h-2/5 bottom-0 left-0 flex flex-col items-center justify-between w-full">
+    <div class="flex flex-col h-16 items-start justify-start px-4 w-full">
+      <p class="text-lg md:text-xl flex items-start justify-start py-1">
+        {{ displayName|length > 60 ? displayName|title|slice(0, 60)|trim ~ '...' : displayName|title }}
+      </p>
+      <p class="text-lg text-bkg/50">${{ price }}</p>
+    </div>
+
+    <a href="{{ purchaseLink }}" class="text-center mx-auto my-4 bg-gray-500 p-4 flex
+    items-center justify-center text-lg rounded-lg w-11/12 text-white">
+      Purchase on MyRegistry
+    </a>
+  </div>
+
+  <div class="bg-white z-0 absolute top-2 left-1/24 w-11/12 h-4/7">
+    <img src="{{ thumbail }}" alt="Registry Image"
+         class="object-contain object-center outline-accent/10 outline-1 rounded-lg shadow-xs h-full w-full"/>
+  </div>
+</div>

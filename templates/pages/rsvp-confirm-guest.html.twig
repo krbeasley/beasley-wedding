@@ -1,0 +1,25 @@
+{% extends "layouts/app.html.twig" %}
+
+{% block title %}RSVP Response | {{ parent() }}{% endblock %}
+
+{% block main %}
+    {% if data|length == 1 %}
+    {% set first, last, plusOne = data[0]["first_name"], data[0]["last_name"], data[0]["allowed_plus_one"] %}
+    <div class="w-full h-screen flex flex-col py-40 items-center justify-start gap-y-16">
+        <div class="w-11/12 max-w-180 flex flex-col justify-start items-start gap-y-8">
+            <p class="text-gray-300 text-3xl fade-in opacity-0">Do you wanna come to our wedding?</p>
+            <p class="text-gray-200 text-xl fade-in opacity-0 delay-300">
+                We'd really love to have you there! No pressure though, you're allowed to say "No" and it'll only
+                hurt our feelings <em>a little bit</em> :(
+            </p>
+            {# YOU LEFT OFF HERE
+            FINISH BUILDING THE PAGE WITH THE CONDITIONS YOU PULLED FROM THE DATABASE
+            #}
+        </div>
+    </div>
+    {% else %}
+    <div class="w-full h-fit flex flex-col py-40">
+        <p class="text-text">An unexpected error has occurred. Please try again later.</p>
+    </div>
+    {% endif %}
+{% endblock %}

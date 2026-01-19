@@ -1,0 +1,40 @@
+<html lang="en" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="/public/styles/output.css" />
+</head>
+<body class="bg-gray-100">
+<main class=" flex flex-col text-bkg relative h-screen">
+    <div class="w-4/5 flex items-center justify-end transition-all gap-10 py-6 mx-auto z-10">
+        <a href="/" class="text-sm capitalize px-8 py-4 text-text bg-gray-600">Main site</a>
+    </div>
+
+    <div class="flex items-center justify-center h-180 w-full">
+        <form method="POST" class="flex flex-col items-center justify-center gap-y-8 rounded-xl shadow p-16 bg-gray-50">
+            {% include "components/ui/forms/csrf-token.html.twig" %}
+            {% include "components/ui/forms/honeypot.html.twig" %}
+
+            <p class="text-3xl text-center">Login</p>
+
+            {% include "components/ui/forms/input.html.twig" with {
+                "name" : "email",
+                "type" : "email",
+                "label" : "Email",
+            } %}
+
+            {% include "components/ui/forms/input.html.twig" with {
+                "name" : "password",
+                "type" : "password",
+                "label" : "Password"
+            } %}
+
+            <button type="submit" value="submit" class="bg-gray-500 text-text px-8 py-4">Login</button>
+        </form>
+    </div>
+
+</main>
+<script src="/public/js/admin.js"></script>
+</body>
+</html>

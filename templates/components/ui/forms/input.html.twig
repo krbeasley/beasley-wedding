@@ -1,0 +1,13 @@
+<div class="w-full flex gap-4 items-center justify-center">
+    <label for="{{ name }}"
+        class="text-lg text-left w-40"
+    >{{ label }}</label>
+    <input type="{{ type }}"
+            name="{{ name }}"
+            id="{{ name }}"
+            {% if autofill is defined %}
+            autocomplete="{{ autofill }}"
+            {% endif %}
+            class="w-full px-4 py-2 rounded-md outline-1 outline-neutral-700 "
+    />
+</div>

@@ -11,6 +11,15 @@ window.addEventListener('DOMContentLoaded', () => {
         theBeasleys.children.item(i).classList.replace('opacity-0', 'opacity-100');
     }
 
-    // unhide the nav menu
+    // unhide the nav in a dramatic fashion
     document.getElementById('nav').classList.replace('opacity-0', 'opacity-100');
+})
+
+
+const pictureOfUs = document.getElementById('welcome-section');
+window.addEventListener('scroll', (e) => {
+  let imagePosition = pictureOfUs.getBoundingClientRect();
+  if (imagePosition.top / window.innerHeight > 0.8) {
+    resetFadeElement(pictureOfUs);
+  }
 })

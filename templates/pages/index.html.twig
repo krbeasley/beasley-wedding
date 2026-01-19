@@ -1,23 +1,38 @@
-{% extends "layouts/app.html.twig" %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}The Beasleys 💍{% endblock %}</title>
+    <link rel="stylesheet" href="/public/styles/output.css" />
+    {% block headscripts %}{% endblock %}
+</head>
+<body>
+<noscript class="w-full py-20 flex flex-col items-center justify-center px-10 text-center gap-6">
+    <p>THIS SITE WILL NOT WORK WITHOUT JAVASCRIPT ENABLED.</p>
+    <p>Get in touch with Kyle and let him know you're reading this message. He will help you out.</p>
+</noscript>
 
-{% block main %}
-    <div class="h-[100vh] max-h-[1000px] w-full flex items-center justify-center relative">
-        <div id="nav" class="absolute top-0 left-1/10 w-4/5 flex items-center justify-evenly transition-all duration-1000
+<main class="bg-bkg flex flex-col text-text bg-[url('/public/img/confetti-doodles.svg')] bg-center lg:bg-fixed
+    lg:bg-no-repeat lg:bg-cover relative">
+    <div id="nav" class="absolute top-0 left-1/10 w-4/5 flex items-center justify-evenly transition-all duration-1000
         delay-1000 gap-10 py-6 opacity-0 z-10">
-            <a class="text-xs text-center italic hover:text-shadow-white text-shadow-xs/25 hover:text-shadow-lg/25 cursor-pointer
-            transition-all duration-150"
-               href="">Directions</a>
-            <a class="text-xs text-center italic hover:text-shadow-white text-shadow-xs/25 hover:text-shadow-lg/25 cursor-pointer
-            transition-all duration-150"
-               href="">RSVP</a>
-            <a class="text-xs text-center italic hover:text-shadow-white text-shadow-xs/25 hover:text-shadow-lg/25 cursor-pointer
-            transition-all duration-150"
-               href="">Registry</a>
-            <a class="text-xs text-center italic hover:text-shadow-white text-shadow-xs/25 hover:text-shadow-lg/25 cursor-pointer
-            transition-all duration-150 hidden md:inline"
-               href="">Memory Lane</a>
-        </div>
+        {% include "components/ui/header-navlink.html.twig" with {
+            "href" : "/rsvp",
+            "text" : "RSVP"
+        } %}
 
+        {% include "components/ui/header-navlink.html.twig" with {
+            "href" : "https://www.myregistry.com/giftlist/the-beasleys",
+            "text" : "Registry",
+        } %}
+
+        {% include "components/ui/header-navlink.html.twig" with {
+            "href" : "/memory-lane",
+            "text" : "Memory Lane",
+        } %}
+    </div>
+
+    <div class="h-[100vh] max-h-[1000px] w-full flex items-center justify-center relative">
         <div id="the-beasleys" class="z-10 flex flex-col items-center justify-center">
             <p class="font-script text-3xl ml-2  opacity-0 transition-all duration-1000 delay-100">the</p>
             <p class="font-script text-5xl  opacity-0 transition-all duration-1000 delay-100">Beasleys</p>
@@ -25,39 +40,47 @@
         </div>
 
         {# Bluebonnets Background #}
-        <div class="z-0 flex items-center justify-center absolute top-0 left-0">
-            <img src="/public/img/bluebonnets.webp"
+        <div class="z-0 flex items-center justify-center absolute top-0 left-0 w-full">
+            <img src="/public/img/astin_mansion_wide.webp"
                  alt="bluebonnets"
-                 class="w-full h-[100vh] max-h-[1000px] object-cover object-right opacity-25 saturate-0"/>
+                 class="w-full h-[100vh] object-cover object-center"/>
         </div>
     </div>
 
-    <section id="welcome-section" class="flex flex-col py-20 text-center items-center justify-center mx-auto w-11/12
-    max-w-[800px] relative my-10">
+    <div id="welcome-section" class="fade-in opacity-0 flex flex-col py-16 text-center items-center justify-center mx-auto w-11/12
+    max-w-[420px] relative mb-10 mt-10 lg:mt-20 gap-10 bg-neutral-100 rounded-xl inset-shadow-sm inset-shadow-black/50 outline-1
+    outline-accent/25 shadow-[0_0_2em_1px] shadow-white/45">
         {# Top ornaments #}
-        <div aria-hidden="false" class="fade-in absolute flex flex-row items-center justify-between w-full top-0 left-0">
-            <img class="w-10 h-10 saturate-0 brightness-200 -scale-y-100" alt="Ornamental corner piece" src="/public/img/corner_ornament.webp"/>
+        <div aria-hidden="false" class="absolute flex flex-row items-center justify-between w-11/12 top-1/24
+        left-1/24">
+            <img class="w-10 h-10 saturate-0 brightness-0 -scale-y-100"
+                 alt="Ornamental corner piece"
+                 src="/public/img/corner_ornament.webp"/>
 
-            <img class="w-10 h-10 saturate-0 brightness-200 -scale-100" alt="Ornamental corner piece" src="/public/img/corner_ornament.webp"/>
+            <img class="w-10 h-10 saturate-0 brightness-0 -scale-100"
+                 alt="Ornamental corner piece"
+                 src="/public/img/corner_ornament.webp"/>
         </div>
 
-        <div class="h-[400px] w-3/4 max-w-[600px] flex items-center justify-center overflow-hidden rounded-lg
-        mb-10 bg-glass">
-            <img src="/public/img/beb_n_i.jpeg" alt="Future Mr and Mrs Beasley" class="h-full w-full"/>
+        <div class="h-[400px] w-7/10 max-w-[600px] flex items-center justify-center overflow-hidden rounded-lg
+        shadow-lg shadow-black/35">
+            <img src="/public/img/beb_n_i.jpeg" alt="Future Mr and Mrs Beasley" class="h-full w-full object-cover object-top"/>
         </div>
 
-        <p class="fade-in w-4/5" aria-hidden="false">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut deserunt dignissimos doloremque eveniet fugit
-            harum illo minus mollitia neque obcaecati, odio odit quam saepe sapiente?
-        </p>
+        <div class="relative flex items-center justify-center w-4/5">
+            <p class="fade-in italic text-4xl font-script text-bkg" aria-hidden="false">
+                Whitney<span class="px-4 text-lg">&</span>Kyle
+            </p>
+        </div>
 
         {# Bottom ornaments #}
-        <div aria-hidden="false" class="fade-in absolute flex flex-row items-center justify-between w-full bottom-0 left-0">
-            <img class="w-10 h-10 saturate-0 brightness-200" alt="Ornamental corner piece" src="/public/img/corner_ornament.webp"/>
+        <div aria-hidden="false" class="absolute flex flex-row items-center justify-between w-11/12 bottom-1/24
+        left-1/24">
+            <img class="w-10 h-10 saturate-0 brightness-0" alt="Ornamental corner piece" src="/public/img/corner_ornament.webp"/>
 
-            <img class="w-10 h-10 saturate-0 brightness-200 -scale-x-100" alt="Ornamental corner piece" src="/public/img/corner_ornament.webp"/>
+            <img class="w-10 h-10 saturate-0 brightness-0 -scale-x-100" alt="Ornamental corner piece" src="/public/img/corner_ornament.webp"/>
         </div>
-    </section>
+    </div>
 
     <section id="link-tree" class="flex flex-col items-center justify-center py-16">
         <p class="text-4xl font-script fade-in">Links</p>
@@ -65,21 +88,34 @@
              alt="Ornamental Divider"
              class="invert-100 brightness-90 w-[120px] -mt-[50px] fade-in z-0"/>
 
-        <div class="w-full flex flex-col items-center justify-start gap-4 -mt-[30px] z-10 fade-in">
+        <div class="w-full flex flex-col items-center justify-start gap-4 -mt-[30px] z-10 fade-in opacity-0">
             <a class="text-xl hover:text-shadow-white text-shadow-lg/25 cursor-pointer transition-all duration-150"
-               href="/">RSVP</a>
+               href="/rsvp">RSVP</a>
             <a class="text-xl hover:text-shadow-white text-shadow-lg/25 cursor-pointer transition-all duration-150"
-               href="/">Directions</a>
+               href="/venue?t=directions">Directions</a>
             <a class="text-xl hover:text-shadow-white text-shadow-lg/25 cursor-pointer transition-all duration-150"
-               href="/">Registry</a>
+               href="/registry">Registry</a>
             <a class="text-xl hover:text-shadow-white text-shadow-lg/25 cursor-pointer transition-all duration-150"
-               href="/">Memory Lane</a>
+               href="/memory-lane">Memory Lane</a>
         </div>
     </section>
 
-    <div class="w-full flex items-center justify-center my-20">
-        <p class="text-xs text-text/35 font-mono">Written by Kyle with love <3</p>
-    </div>
 
-    <script src="/public/js/index.js"></script>
-{% endblock %}
+    <div class="w-full flex items-center justify-center my-20">
+        <p class="text-xs text-text/35 font-mono text-center">Dedicated to my fiancée 💜 Whitney</p>
+    </div>
+</main>
+
+{# Scroll to top button #}
+<div id="return-to-top"
+     class="fixed bottom-10 right-10 h-16 w-16 rounded-full bg-glass flex lg:hidden items-center justify-center opacity-0
+    transition-all duration-500 z-20">
+    <img src="/public/img/carat-icon.svg"
+         alt="Carat Icon"
+         class="h-10 w-10"/>
+</div>
+
+<script src="/public/js/app.js" ></script>
+<script src="/public/js/index.js"></script>
+</body>
+</html>

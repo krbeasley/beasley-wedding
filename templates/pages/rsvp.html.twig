@@ -1,0 +1,59 @@
+{% extends "layouts/app.html.twig" %}
+
+{% block title %}RSVP | {{ parent() }}{% endblock %}
+
+{% block headscripts %}
+  <script src="/public/js/rsvp.js" defer></script>
+{% endblock %}
+
+
+{% block main %}
+<div class="relative flex flex-col z-10 w-full min-h-screen items-center justify-start">
+    <div id="nameSearchContainer" class="flex flex-col items-center justify-center w-11/12 max-w-[620px] mt-40">
+        {# Name Search Container #}
+        <div id="nameSearchContainer" class="flex flex-col items-center justify-center gap-8 w-full fade-in opacity-0">
+            <label for="inputNameSearch" class="text-3xl">Search For Your Invite</label>
+
+            <input type="text"
+                   name="inputNameSearch"
+                   id="inputNameSearch"
+                   class="w-full bg-bkg border-2 border-text px-8 py-4 rounded-full text-3xl placeholder:text-gray-300"
+                   placeholder="Enter your name"
+            />
+            <button type="button"
+                    id="btnNameSearch"
+                    class="bg-gray-800 text-text text-2xl w-1/2 min-w-[120px] py-4 rounded-full cursor-pointer
+                    transition-all duration-150 ease-in-out hover:shadow-lg shadow-slate-800/50 hidden
+                    disabled:bg-gray-400 disabled:cursor-not-allowed">
+                Search
+            </button>
+        </div>
+
+        {# Name Search Results Container #}
+        <div id="nameSearchResultsContainer"
+             class="flex flex-col items-center justify-center bg-transparent opacity-0 transition-all duration-150
+             ease-in-out rounded-md mt-16 w-11/12 max-w-180">
+            {# Spinner Image #}
+            <img id="ring-spinner" src="/public/img/spinner.gif" alt="spinner gif" class="invert-100" />
+            {# Real results container #}
+            <div id="divNameResults"
+                 class="hidden bg-gray-800 px-16 py-8 rounded-lg flex-col items-center justify-center w-full">
+                <p id="txtNameSearchMessage" class="text-text text-center text-xl"></p>
+            </div>
+        </div>
+
+        {# Confirm Popup #}
+        <div id="panelConfirmPopup" class="fixed top-0 left-0 w-screen h-screen bg-bkg/50 items-center
+        justify-center hidden overflow-hidden">
+            <div class="confirm-panel h-200 w-11/12 max-w-200 bg-gray-800 p-16 flex flex-col items-center
+            justify-center shadow-lg shadow-gray-800 rounded-lg gap-y-8">
+
+            </div>
+        </div>
+    </div>
+
+    {# Hidden Inputs #}
+    <p id="_csrf_token" class="hidden">{{ csrf() }}</p>
+    <p id="hdnNameSearch" class="hidden"></p>
+</div>
+{% endblock %}

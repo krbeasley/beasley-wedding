@@ -1,0 +1,15 @@
+{% extends "layouts/app.html.twig" %}
+
+{% block title %}RSVP Response | {{ parent() }}{% endblock %}
+
+{% block main %}
+    <div class="w-full h-fit flex flex-col py-40">
+        <p class="text-5xl">RSVP Response</p>
+            {% if data|length > 0 %}
+                <p class="text-text">WE GOT DATA</p>
+            {% else %}
+                <p class="text-text">NO DATA</p>
+            {% endif %}
+        <div class="my-16"></div>
+    </div>
+{% endblock %}

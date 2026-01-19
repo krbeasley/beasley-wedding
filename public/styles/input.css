@@ -10,7 +10,7 @@
 
 @theme {
     --color-text: #fff;
-    --color-bkg: #000;
+    --color-bkg: #050505;
     --color-primary: #aaa;
     --color-secondary: #bbb;
     --color-accent: #ccc;
@@ -25,3 +25,15 @@
         0 0 12px 5px rgba(10,5,50,.35);
     backdrop-filter: blur(2px);
 }
+
+/* This is the honeypot class */
+.outside-input {
+    position: absolute;
+    top: 0;
+    left: -9999px;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* RSVP Custom CSS */

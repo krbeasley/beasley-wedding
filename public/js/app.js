@@ -5,7 +5,9 @@
 
 const fadeElements = document.querySelectorAll('.fade-in');
 const returnToTopButton = document.getElementById('return-to-top');
+const headerNavLinks = document.querySelectorAll('.header-navlink');
 
+// Click handler for the return to top button
 returnToTopButton.addEventListener('click', () => {
     // Only scroll when the button is visible
     if (returnToTopButton.classList.contains('opacity-100')) {
@@ -16,15 +18,17 @@ returnToTopButton.addEventListener('click', () => {
     }
 });
 
+// Run on window load
 window.addEventListener('DOMContentLoaded', () => {
     fadeElements.forEach((e) => {
         resetFadeElement(e);
 
         // check that none of the elements need to be shown immediately
         tryUnfadeElement(e);
-    })
+    });
+});
 
-})
+// Keep track of the scroll position for location based scrolling.
 window.addEventListener('scroll', () => {
     for (let i = 0; i < fadeElements.length; i++) {
         let hidden = fadeElements[i].ariaHidden === 'true';
@@ -88,4 +92,36 @@ function getCookie(cname) {
         }
     }
     return "";
+}
+
+function scrollToAnchor(anchorId) {
+    let target = document.getElementById(anchorId);
+    if (target) {
+        let coords = {
+            'top' : target.getBoundingClientRect().top,
+            'bottom' : target.getBoundingClientRect().bottom,
+        };
+
+        window.scrollTo({
+            top: coords.top,
+            behavior: "smooth"
+        });
+    }
+}
+
+const currentUrl = () => {
+  return window.location.origin;
+}
+
+function getCsrfToken() {
+  if (document.getElementById('_csrf_token')) {
+    const element = document.getElementById('_csrf_token');
+    if (element.tagName === 'input') {
+      return element.value;
+    } else {
+      return element.innerText;
+    }
+  }
+
+  return null;
 }

@@ -1,0 +1,5 @@
+DROP TABLE IF EXISTS tbl_user;
+DROP TABLE IF EXISTS tbl_guest;
+DROP TABLE IF EXISTS tbl_parties;
+DROP TABLE IF EXISTS tbl_rsvp;
+DROP TABLE IF EXISTS tbl_rsvp_requests;

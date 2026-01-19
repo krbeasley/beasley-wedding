@@ -2,19 +2,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>The Beasley Wedding</title>
+    <title>{% block title %}The Beasleys 💍{% endblock %}</title>
     <link rel="stylesheet" href="/public/styles/output.css" />
     {% block headscripts %}{% endblock %}
 </head>
 <body>
-<noscript>
-    <h1 style="color:red; text-align:center; margin-top:10rem;">THIS SITE WILL NOT WORK WITHOUT JAVASCRIPT ENABLED.</h1>
-    <h1 style="color:red; text-align:center; margin-bottom:10rem;">IF YOU DO NOT KNOW WHY YOU ARE SEEING THIS MESSAGE, CALL YOUR GRANDKIDS FOR HELP.</h1>
+<noscript class="w-full py-20 flex flex-col items-center justify-center px-10 text-center gap-6">
+    <p>THIS SITE WILL NOT WORK WITHOUT JAVASCRIPT ENABLED.</p>
+    <p>Get in touch with Kyle and let him know you're reading this message. He will help you out.</p>
 </noscript>
 
-    <main class="bg-bkg flex flex-col text-text">
+    <main class="bg-bkg flex flex-col text-text bg-[url('/public/img/confetti-doodles.svg')] bg-center lg:bg-fixed
+    lg:bg-no-repeat lg:bg-cover relative">
+        <div class="w-4/5 flex items-center justify-evenly transition-all gap-10 py-6 mx-auto z-10">
+            {% include "components/ui/header-navlink.html.twig" with {
+                "href" : "/",
+                "text" : "Home",
+            } %}
+
+            {% include "components/ui/header-navlink.html.twig" with {
+                "href" : "/venue",
+                "text" : "The Venue",
+                "class" : "hidden"
+            } %}
+
+            {% include "components/ui/header-navlink.html.twig" with {
+                "href" : "/rsvp",
+                "text" : "RSVP"
+            } %}
+
+            {% include "components/ui/header-navlink.html.twig" with {
+                "href" : "https://www.myregistry.com/giftlist/the-beasleys",
+                "text" : "Registry",
+                "class" : "hidden md:inline"
+            } %}
+
+            {% include "components/ui/header-navlink.html.twig" with {
+                "href" : "/memory-lane",
+                "text" : "Memory Lane",
+            } %}
+        </div>
+
         {% block main %}
         {% endblock %}
+
+        <div class="w-full flex items-center justify-center my-20">
+            <p class="text-xs text-text/35 font-mono text-center">Dedicated to my fiancée 💜 Whitney</p>
+        </div>
     </main>
 
 {# Scroll to top button #}
@@ -25,7 +59,6 @@
          alt="Carat Icon"
          class="h-10 w-10"/>
 </div>
-
-    <script src="/public/js/app.js" ></script>
+    <script src="/public/js/app.js"></script>
 </body>
 </html>
