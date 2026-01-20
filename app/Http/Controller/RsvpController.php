@@ -4,7 +4,6 @@ namespace App\Http\Controller;
 
 use App\Database\Database;
 use App\General;
-use App\Http\API\ApiResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,17 +22,10 @@ class RsvpController extends Controller
         // check if the user is responding or has responded
         $isResponding = false;
         $hasResponded = false;
-        if (General::getSessionSetting('confirm_id')) {
+        if (General::getSessionSetting('confirm_guest_id')) {
             $isResponding = true;
             if (General::getSessionSetting('confirm_has_responded')) {
                 $hasResponded = true;
-            }
-        } else {
-            // Check the user's cookies too
-            if (isset($_COOKIE["confirm_data"])) {
-                $confirmData = unserialize($_COOKIE["confirm_data"]);
-                $isResponding = isset($confirmData["confirm_id"]);
-                $hasResponded = isset($confirmData["confirm_has_responded"]);
             }
         }
 
@@ -44,7 +36,7 @@ class RsvpController extends Controller
                 // todo: handle these values on front end
                 "errors" => $errors,
                 "hasResponded" => $hasResponded,
-                "isResponding" => $isResponding
+                "isResponding" => $isResponding,
             ]);
             return new Response($html, Response::HTTP_OK);
         }
@@ -61,21 +53,24 @@ class RsvpController extends Controller
         }
 
         $formErrors = array();
+        // Honeypot
         if (!empty($request->request->get("your-product-key"))) {
             General::setRateLimit("/rsvp/confirm", 30);
             return new RedirectResponse("/rsvp");
         }
+        // Make sure the parameters are all present
         else if (empty($request->get('g')) || empty($request->get('f')) || empty($request->get('l')) || empty($request->get('p'))) {
             General::setRateLimit("/rsvp/confirm", 10);
             return new RedirectResponse("/rsvp");
         }
 
-        General::setSessionSetting("confirm_id", $request->get('g'));
+        // Set the rsvp confirmation session settings
+        General::setSessionSetting("confirm_guest_id", $request->get('g'));
         General::setSessionSetting("confirm_party_id", ($request->get('p') === 'null' ? -1 : $request->get('p')));
         General::setSessionSetting("confirm_first_name", $request->get('f'));
         General::setSessionSetting("confirm_last_name", $request->get('l'));
 
-        $confirmGuestId = intval(General::getSessionSetting("confirm_id"));
+        $confirmGuestId = intval(General::getSessionSetting("confirm_guest_id"));
         $confirmFirstName = General::getSessionSetting("confirm_first_name");
         $confirmLastName = General::getSessionSetting("confirm_last_name");
         $confirmPartyId = intval(General::getSessionSetting("confirm_party_id"));
@@ -116,5 +111,11 @@ class RsvpController extends Controller
         return new Response($c->twig->render($twigFilePath, [
             "data" => $data
         ]));
+    }
+
+    public static function createRsvpRequest(Request $request) : Response|RedirectResponse
+    {
+        echo "This site in under construction. Please wait.";
+        die();
     }
 }

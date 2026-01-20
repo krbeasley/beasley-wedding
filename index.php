@@ -31,17 +31,16 @@ $request = Request::createFromGlobals();
 $routes = [
     // Home Page
     new Route('/', "GET", [PageController::class, "index"]),
-
+    // Travel Page
+    new Route('/travel', "GET", [PageController::class, "travel"]),
     // RSVP
     new Route('/rsvp', "GET", [RsvpController::class, "index"]),
     new Route("/rsvp/confirm", "GET", [RsvpController::class, "confirm"]),
-
+    new Route("/rsvp/confirm", "POST", [RsvpController::class, "createRsvpRequest"]),
     // The Venue
     new Route('/venue', "GET", [PageController::class, "venue"]),
-
     // The Registry
     new Route('/registry', "GET", [RegistryController::class, "viewRegistry"]),
-
     // Errors
     new Route('/error/:code', "GET", [PageController::class, "error"]),
 

@@ -2,24 +2,104 @@
 
 {% block title %}RSVP Response | {{ parent() }}{% endblock %}
 
+{% block headscripts %}
+<script src="/public/js/rsvp-confirm-elements.js" defer></script>
+<script src="/public/js/rsvp-confirm.js" defer></script>
+{% endblock %}
+
 {% block main %}
     {% if data|length == 1 %}
     {% set first, last, plusOne = data[0]["first_name"], data[0]["last_name"], data[0]["allowed_plus_one"] %}
-    <div class="w-full h-screen flex flex-col py-40 items-center justify-start gap-y-16">
-        <div class="w-11/12 max-w-180 flex flex-col justify-start items-start gap-y-8">
-            <p class="text-gray-300 text-3xl fade-in opacity-0">Do you wanna come to our wedding?</p>
-            <p class="text-gray-200 text-xl fade-in opacity-0 delay-300">
+    <div id="main-container" class="w-full min-h-screen flex flex-col py-40 items-center justify-start gap-y-8">
+
+        {# Section One #}
+        <div id="welcome-section" aria-hidden="false"
+             class="form-section w-11/12 max-w-180 flex flex-col justify-center items-center gap-y-8 transition-all
+             duration-150">
+            <p class="text-gray-300 text-3xl fade-in opacity-0 text-center">Do you wanna come to our wedding?</p>
+            <p class="text-gray-200 text-xl fade-in opacity-0 delay-300 text-center">
                 We'd really love to have you there! No pressure though, you're allowed to say "No" and it'll only
                 hurt our feelings <em>a little bit</em> :(
             </p>
-            {# YOU LEFT OFF HERE
-            FINISH BUILDING THE PAGE WITH THE CONDITIONS YOU PULLED FROM THE DATABASE
-            #}
+
+            <div class="w-full flex items-center gap-x-8 fade-in opacity-0 delay-1000 duration-500 mt-8 mb-32 justify-center">
+                <button id="confirm-attend-button"
+                   onclick="void(0);"
+                   class="px-16 py-4 text-2xl rounded-lg bg-gray-700 text-text cursor-pointer hover:shadow-lg
+                   shadow-gray-800 disabled:opacity-55 disabled:cursor-pointer">
+                    Yes
+                </button>
+
+                <button id="decline-attend-button"
+                   onclick="void(0);"
+                   class="px-16 py-4 text-2xl rounded-lg bg-gray-300 text-bkg cursor-pointer hover:shadow-lg
+                   shadow-neutral-800 disabled:opacity-55 disabled:cursor-pointer">
+                    No
+                </button>
+            </div>
         </div>
+
+        {# Confirm Section #}
+        <div id="confirm-section" aria-hidden="true"
+            class="form-section w-11/12 max-w-180 opacity-0 transition-all duration-150 text-text flex flex-col pt-20
+            justify-center items-center gap-y-8">
+            <p class="text-gray-300 text-5xl text-center">Wonderful!</p>
+            <p class="text-gray-300 text-2xl text-center">We'll confirm your RSVP as it appears below</p>
+            <div class="pt-8 flex flex-col items-center justify-center">
+                <p class="text-3xl italic">{{ first }} {{ last }}</p>
+                <p id="plus-one-display" class="text-3xl italic"></p>
+            </div>
+        </div>
+
+        {# Decline Section #}
+        <div id="decline-section" aria-hidden="true"
+            class="form-section w-11/12 max-w-180 opacity-0 transition-all duration-150 text-text flex flex-col
+            justify-center items-center gap-y-8">
+            <p class="text-gray-300 text-3xl text-center">Decline</p>
+        </div>
+
+        {# [Optional] Plus One Section #}
+        {% if plusOne == 1 %}
+        <div id="plus-one-section" aria-hidden="true"
+            class="form-section w-11/12 max-w-180 opacity-0 transition-all duration-150 text-text flex flex-col
+            justify-center items-center gap-y-8">
+            <p class="text-gray-300 text-3xl text-center">Did you want to bring a plus one?</p>
+
+            <div class="flex flex-col items-center justify-center gap-y-4 w-full max-w-120">
+                <label for="plus-one-input" class="text-xl text-center">Enter their first and last name here:</label>
+                <input type="text" name="plus-one-input" id="plus-one-input" inert placeholder="Leave Blank To Say No"
+                       class="rounded-full border-2 border-white px-8 py-4 text-center w-full text-xl" />
+            </div>
+        </div>
+        {% endif %}
+
+        {# Submit Section #}
+        <div id="submit-section" aria-hidden="true"
+             class="form-section w-11/12 max-w-180 opacity-0 transition-all duration-450 flex flex-col items-center pt-8 pb-16
+             justify-center">
+            <button id="sb" onclick="void(0);" class="bg-neutral-50 text-bkg text-2xl rounded-full flex items-center
+            justify-center py-4 px-16 hover:shadow-lg shadow-neutral-500 transition-all duration-150 cursor-pointer">
+                Confirm Your RSVP
+            </button>
+
+            <a class="text-sm mt-8 underline text-gray-400 cursor-pointer" onclick="window.location.reload()">
+                Changed your mind? Click here to reset your confirmation.
+            </a>
+        </div>
+
+        {# Hidden Form #}
+        <form class="hidden" method="POST" id="frm">
+            {% include "components/ui/forms/honeypot.html.twig" %}
+            {% include "components/ui/forms/csrf-token.html.twig" %}
+            <input type="hidden" name="gid" id="gid" />
+            <input type="hidden" name="pid" id="pid" value="-1" />
+            <input type="hidden" name="firstname" id="firstname" />
+            <input type="hidden" name="lastname" id="lastname" />
+        </form>
     </div>
     {% else %}
-    <div class="w-full h-fit flex flex-col py-40">
-        <p class="text-text">An unexpected error has occurred. Please try again later.</p>
+    <div class="w-full h-fit flex flex-col py-40" aria-hidden="true">
+        <p class="text-text text-center">An unexpected error has occurred. Please try again later.</p>
     </div>
     {% endif %}
 {% endblock %}

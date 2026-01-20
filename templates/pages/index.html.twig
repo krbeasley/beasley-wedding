@@ -17,8 +17,8 @@
     <div id="nav" class="absolute top-0 left-1/10 w-4/5 flex items-center justify-evenly transition-all duration-1000
         delay-1000 gap-10 py-6 opacity-0 z-10">
         {% include "components/ui/header-navlink.html.twig" with {
-            "href" : "/rsvp",
-            "text" : "RSVP"
+            "href" : "/travel",
+            "text" : "Travel"
         } %}
 
         {% include "components/ui/header-navlink.html.twig" with {
@@ -37,9 +37,15 @@
             <p class="font-script text-3xl ml-2  opacity-0 transition-all duration-1000 delay-100">the</p>
             <p class="font-script text-5xl  opacity-0 transition-all duration-1000 delay-100">Beasleys</p>
             <p class="italic mt-10 text-sm opacity-0 transition-all duration-1000 delay-500">10 / 3 / 2026</p>
+
+            <a href="/rsvp"
+               class="italic px-8 py-4 cursor-pointer mt-32 opacity-0 transition-all duration-1000 delay-1000 bg-white
+               text-bkg rounded-md">
+                Click Here to RSVP
+            </a>
         </div>
 
-        {# Bluebonnets Background #}
+        {# Background Image #}
         <div class="z-0 flex items-center justify-center absolute top-0 left-0 w-full">
             <img src="/public/img/astin_mansion_wide.webp"
                  alt="bluebonnets"
